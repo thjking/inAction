@@ -1,10 +1,10 @@
 # -*- coding:utf-8 -*-
+from numpy import *
 import kNN
-import matplotlib
+import fileLoad
+import draw
+import matplotlib as mpl
 import matplotlib.pyplot as plt
 
-datingDataMat,datingLabels = kNN.file2matrix('datingTestSet.txt')
-fig = plt.figure()
-ax = fig.add_subplot(111)
-ax.scatter(datingDataMat[:,1],datingDataMat[:,2])
-plt.show()
+mat,lab = fileLoad.filematrix0('datingTestSet.txt')
+print mat,lab

@@ -7,7 +7,7 @@ def createDataSet():
     labels = ['A','A','B','B']
     return group,labels
 
-def classify0(inX,dataSet,labels,k):
+def classify0(inX,dataSet,labels,k):    #分类函数（待分类向量，训练数据，标签数据，k值）
     dataSetSize = dataSet.shape[0]      #计算dataSet矩阵行数           
     diffMat = tile(inX, (dataSetSize,1)) - dataSet       #复制inX矩阵后与dataSet矩阵相减
     sqDiffMat = diffMat ** 2    #平方（计算欧式距离的其中一步）
@@ -22,18 +22,3 @@ def classify0(inX,dataSet,labels,k):
     key = operator.itemgetter(1),reverse = True)        #对上述字典进行逆排序
     return sortedClassCount[0][0]       #返回次数最多的类别
  
-def file2matrix(filename):      #从文本解析数据
-    fr = open(filename)
-    arrayOLines = fr.readlines()        #按行读取
-    numberOfLines = len(arrayOLines)    #保存行数
-    returnMat = zeros((numberOfLines,3))#依据文本内数据创建numberOfLines行3列训练样本的矩阵（numpy内的zeros数组，不同于python自带数组）
-    classLabelVector = []               #创建类标签矩阵
-    index = 0
-    for line in arrayOLines:            #按行处理文本数据
-        line = line.strip()             #去除空格
-        listFromLine = line.split('\t') #去除制表符
-        print listFromLine
-        returnMat[index,:] = listFromLine[0:3]      #将前三元素赋予训练样本矩阵之一行
-        classLabelVector.append(listFromLine[-1])   #将最后一个元素赋予标签列表
-        index += 1                                  #训练矩阵行数加一，为之后赋值
-    return returnMat,classLabelVector               #返回训练矩阵与标签列表
