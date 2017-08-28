@@ -6,5 +6,6 @@ import draw
 import matplotlib as mpl
 import matplotlib.pyplot as plt
 
-mat,lab = fileLoad.filematrix0('datingTestSet.txt')
-print mat,lab
+mat = fileLoad.filematrix1('datingTestSet.txt')
+draw.draw(mat)
+plt.show()
