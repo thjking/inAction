@@ -20,5 +20,4 @@ def classify0(inX,dataSet,labels,k):    #分类函数（待分类向量，训练
         classCount[voteIlabel] = classCount.get(voteIlabel,0) + 1       #创建以类别为关键字的字典，值为类别所属次数并随循环不断更新
     sortedClassCount = sorted(classCount.iteritems(),
     key = operator.itemgetter(1),reverse = True)        #对上述字典进行逆排序
-    return sortedClassCount[0][0]       #返回次数最多的类别
- 
+    return sortedClassCount[0][0]      #返回次数最多的类别 
