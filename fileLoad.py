@@ -8,7 +8,7 @@ def filematrix0(filename):      #从文本解析数据
     classLabelVector = []               #创建类标签矩阵
     label = []
     index1 = 0
-    index2 =0
+    index2 = 0
     for line in arrayOfLines:            #按行处理文本数据
         line = line.strip()             #去除空格
         listFromLine = line.split('\t') #去除制表符

@@ -18,4 +18,4 @@ def normal(data):
     m = data.shape[0]
     normData = data - tile(minVals,(m,1))
     normData = normData / tile(ranges,(m,1))
-    return normData
+    return normData, ranges, minVals

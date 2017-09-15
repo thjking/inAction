@@ -7,9 +7,24 @@ import matplotlib as mpl
 import matplotlib.pyplot as plt
 import normalization as norm
 
-# mat = fileLoad.filematrix1('datingTestSet.txt')
-# draw.draw(mat)
-# plt.show()
-mat,label = fileLoad.filematrix0('datingTestSet.txt')
-mat = norm.normal(mat)
-kNN.classify0([0.2,0.4,0.6],mat,label,3)
+def draw():
+    mat = fileLoad.filematrix1('datingTestSet.txt')
+    draw.draw(mat)
+    plt.show()
+
+def datingClassTest():
+    x = 0.10
+    Mat, Labels = fileLoad.filematrix0('datingTestSet.txt')
+    normMat, ranges, minVals = norm.normal(Mat)
+    m = normMat.shape[0]
+    numTestVecs = int(m * x)
+    errorCount = 0.0
+    for i in range(numTestVecs):
+        classifierResult = kNN.classify0(normMat[i,:],normMat[numTestVecs:m,:],\
+                                         Labels[numTestVecs:m],3)
+        print "the classifier came back with: %d, the real answer is: %d"\
+                                                %(classifierResult,Labels[i])
+        if (classifierResult != Labels[i]): errorCount += 1.0
+    print "the total error rate is %f" %(errorCount / float(numTestVecs))
+        
+datingClassTest()
